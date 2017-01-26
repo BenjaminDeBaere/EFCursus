@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OpleidingenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OpleidingenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Campussen">
           <Key>
             <PropertyRef Name="CampusNr" />
@@ -26,6 +26,16 @@
           <Property Name="Wedde" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="CampusNr" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Voorraden">
+          <Key>
+            <PropertyRef Name="MagazijnNr" />
+            <PropertyRef Name="ArtikelNr" />
+          </Key>
+          <Property Name="MagazijnNr" Type="int" Nullable="false" />
+          <Property Name="ArtikelNr" Type="int" Nullable="false" />
+          <Property Name="AantalStuks" Type="int" Nullable="false" />
+          <Property Name="RekNr" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Docenten__Campus__1273C1CD">
           <End Role="Campussen" Type="Self.Campussen" Multiplicity="1" />
           <End Role="Docenten" Type="Self.Docenten" Multiplicity="*" />
@@ -41,13 +51,13 @@
         <EntityContainer Name="OpleidingenModelStoreContainer">
           <EntitySet Name="Campussen" EntityType="Self.Campussen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docenten" EntityType="Self.Docenten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voorraden" EntityType="Self.Voorraden" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Docenten__Campus__1273C1CD" Association="Self.FK__Docenten__Campus__1273C1CD">
             <End Role="Campussen" EntitySet="Campussen" />
             <End Role="Docenten" EntitySet="Docenten" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OpleidingenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -93,7 +103,18 @@
             <End Role="Campussen" EntitySet="Campussen" />
             <End Role="Docenten" EntitySet="Docenten" />
           </AssociationSet>
+          <EntitySet Name="Voorraden" EntityType="OpleidingenModel.Voorraad" />
         </EntityContainer>
+        <EntityType Name="Voorraad">
+          <Key>
+            <PropertyRef Name="MagazijnNr" />
+            <PropertyRef Name="ArtikelNr" />
+          </Key>
+          <Property Name="MagazijnNr" Type="Int32" Nullable="false" />
+          <Property Name="ArtikelNr" Type="Int32" Nullable="false" />
+          <Property Name="AantalStuks" Type="Int32" Nullable="false" />
+          <Property Name="RekNr" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -120,6 +141,16 @@
                 <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
                 <ScalarProperty Name="Wedde" ColumnName="Wedde" />
                 <ScalarProperty Name="CampusNr" ColumnName="CampusNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voorraden">
+            <EntityTypeMapping TypeName="OpleidingenModel.Voorraad">
+              <MappingFragment StoreEntitySet="Voorraden">
+                <ScalarProperty Name="RekNr" ColumnName="RekNr" />
+                <ScalarProperty Name="AantalStuks" ColumnName="AantalStuks" />
+                <ScalarProperty Name="ArtikelNr" ColumnName="ArtikelNr" />
+                <ScalarProperty Name="MagazijnNr" ColumnName="MagazijnNr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

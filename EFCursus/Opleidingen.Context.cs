@@ -27,5 +27,6 @@ namespace EFCursus
     
         public virtual DbSet<Campus> Campussen { get; set; }
         public virtual DbSet<Docent> Docenten { get; set; }
+        public virtual DbSet<Voorraad> Voorraden { get; set; }
     }
 }
