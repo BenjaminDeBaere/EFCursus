@@ -35,6 +35,7 @@
           <Property Name="ArtikelNr" Type="int" Nullable="false" />
           <Property Name="AantalStuks" Type="int" Nullable="false" />
           <Property Name="RekNr" Type="int" Nullable="false" />
+          <Property Name="Aangepast" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <Association Name="FK__Docenten__Campus__1273C1CD">
           <End Role="Campussen" Type="Self.Campussen" Multiplicity="1" />
@@ -114,6 +115,7 @@
           <Property Name="ArtikelNr" Type="Int32" Nullable="false" />
           <Property Name="AantalStuks" Type="Int32" Nullable="false" />
           <Property Name="RekNr" Type="Int32" Nullable="false" />
+          <Property Name="Aangepast" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -147,6 +149,7 @@
           <EntitySetMapping Name="Voorraden">
             <EntityTypeMapping TypeName="OpleidingenModel.Voorraad">
               <MappingFragment StoreEntitySet="Voorraden">
+                <ScalarProperty Name="Aangepast" ColumnName="Aangepast" />
                 <ScalarProperty Name="RekNr" ColumnName="RekNr" />
                 <ScalarProperty Name="AantalStuks" ColumnName="AantalStuks" />
                 <ScalarProperty Name="ArtikelNr" ColumnName="ArtikelNr" />
