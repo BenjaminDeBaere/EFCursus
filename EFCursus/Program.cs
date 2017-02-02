@@ -12,22 +12,16 @@ namespace EFCursus
     {
         static void Main(string[] args)
         {
-
-            try
-            {
-                Console.Write("Artikel nr.: ");
-                var artikelNr = int.Parse(Console.ReadLine());
-                Console.Write("Magazijn nr.:");
-                var magazijnNr = int.Parse(Console.ReadLine());
-                Console.Write("Aantal stuks toevoegen:");
-                var aantalStuks = int.Parse(Console.ReadLine());
-                VoorraadBijvulling(artikelNr, magazijnNr, aantalStuks);
-
-            }
-            catch(FormatException)
-            {
-                Console.WriteLine("Tik een getal");
-            }
+            Console.Write("Familienaam: ");
+            var familienaam = Console.ReadLine(); 
+            
+                using (var entities = new OpleidingenEntities())
+                {
+                    var aantalDocenten = entities.AantalDocentenMetFamilienaam(familienaam);
+                    Console.WriteLine("{0} docent(en)", aantalDocenten.First());
+                }
+            
+            Console.ReadLine();
            
 
 

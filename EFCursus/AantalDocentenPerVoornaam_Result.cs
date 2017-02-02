@@ -10,14 +10,10 @@
 namespace EFCursus
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Voorraad
+    public partial class AantalDocentenPerVoornaam_Result
     {
-        public int MagazijnNr { get; set; }
-        public int ArtikelNr { get; set; }
-        public int AantalStuks { get; set; }
-        public int RekNr { get; set; }
-        public byte[] Aangepast { get; set; }
+        public string Voornaam { get; set; }
+        public Nullable<int> Aantal { get; set; }
     }
 }

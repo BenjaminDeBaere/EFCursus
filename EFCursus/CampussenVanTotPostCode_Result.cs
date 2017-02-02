@@ -10,14 +10,14 @@
 namespace EFCursus
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Voorraad
+    public partial class CampussenVanTotPostCode_Result
     {
-        public int MagazijnNr { get; set; }
-        public int ArtikelNr { get; set; }
-        public int AantalStuks { get; set; }
-        public int RekNr { get; set; }
-        public byte[] Aangepast { get; set; }
+        public int CampusNr { get; set; }
+        public string Naam { get; set; }
+        public string Straat { get; set; }
+        public string HuisNr { get; set; }
+        public string PostCode { get; set; }
+        public string Gemeente { get; set; }
     }
 }
