@@ -29,7 +29,7 @@ namespace EFCursus
 
 
 
-        static void VoorraadBijvulling(int artikelNr, int magazijnNr, int aantalStuks)
+        static void VoorraadBijvulling(int artikelNr, int magazijnNr, int aantalStuks) 
         {
             using (var entities = new OpleidingenEntities())
             {
